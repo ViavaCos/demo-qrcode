@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>decode-qrcode</title>
+</head>
+<body>
+
+  <iframe src="www.baidu.com" width="400" height="600" frameborder="0"></iframe>
+
+  <input type="file" name="file" onchange="fileIptChange(this)">
+
+  <!-- 引入后将会在全局得到一个全局变量 QrcodeDecoder -->
+  <script src="./qrcode-decoder@0.3.1.min.js"></script>
+  <script>
+    const decoder = new QrcodeDecoder()
+    // const res = await decoder.decodeFromImage(url)
+
+    function fileIptChange(e) {
+      // 获取File文件
+      const file = e.files[0]
+      
+      // 使用FileReader将File转成Base64格式
+      const reader = new FileReader()
+      reader.onload = (evt) => {
+        // console.dir(evt)
+        decoder.decodeFromImage(evt.target.result).then(res => {
+          /*
+           * res的数据结构
+           * {
+           *   binaryData, chunks, data, location, version
+           * }
+           */
+          console.dir(res)
+          alert(res.data)
+        })
+      }
+      reader.readAsDataURL(file)
+    }
+  </script>
+  
+</body>
+</html>

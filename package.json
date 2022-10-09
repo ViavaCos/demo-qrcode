@@ -1,0 +1,12 @@
+{
+  "name": "demo-qrcode",
+  "version": "1.0.0",
+  "description": "This `qrcode.js` from https://github.com/davidshimjs/qrcodejs/blob/master/qrcode.js",
+  "main": "qrcode.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

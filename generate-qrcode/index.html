@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo-qrcode</title>
+</head>
+<body>
+  <!-- 存放二维码的容器 -->
+  <div id="qrcode"></div>
+
+  <!-- 引入qrcode.js之后会得到一个全局变量 QRCode -->
+  <script src="./qrcode.js"></script>
+
+  <script>
+    // 1.基础用法
+    // new QRCode(document.getElementById('qrcode'), 'mdzz')
+
+    /*
+     * 2.通过实例化QRCode生成二维码
+     * QRCode.CorrectLevel的取值 { L:1, M:0, Q:3, H:2 }
+     * 
+     */
+    var qrcode = new QRCode(document.getElementById('qrcode'), {
+      text: 'Hell World',
+      width: 128,
+      height: 128,
+      colorDark: '#000',
+      colorLight: '#fff',
+      correctLevel: QRCode.CorrectLevel.H
+    })
+
+    // 3.通过调用qrcode.makeCode生成另一个二维码 (会替换掉上面的二维码)
+    // qrcode.makeCode('How are you?')
+
+    // 4.清除二维码
+    // qrcode.clear();
+  </script>
+</body>
+</html>
